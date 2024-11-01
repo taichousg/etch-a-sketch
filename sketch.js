@@ -11,14 +11,18 @@ function hoverFunction(){
 }
 
 function userInput(){
-    let newsquareTotal = prompt("Enter a number of squares per side for the new grid:","16 (Initial Value)");
+    let newsquareTotal = prompt("Enter a number of squares per side for the new grid:","0-100");
     if (newsquareTotal == null || newsquareTotal == ""){
         squareTotal = 16;
     } else {
-        squareTotal = newsquareTotal;
-        const container = document.getElementById('container');
-        container.innerHTML = '';
-        initializeSquares();
+        if (newsquareTotal > 100){
+            window.alert("Number of squares cannot be higher than 100.")
+        } else {
+            squareTotal = newsquareTotal;
+            const container = document.getElementById('container');
+            container.innerHTML = '';
+            initializeSquares();
+        }
     }
 }
 
@@ -47,14 +51,6 @@ function initializeSquares(){
         console.error('Container element not found');
     }
     
-    if (userSelection){
-        userSelection.addEventListener('click', function(){
-            /* Popup for user to input a number from 16 to 100*/
-        });
-    }
-    else{
-        console.error('Button popup element not found');
-    }
     const squareNumber = document.getElementById('squareNumber');
     squareNumber.textContent = squareTotal;
 }
