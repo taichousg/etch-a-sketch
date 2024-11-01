@@ -26,6 +26,13 @@ function userInput(){
     }
 }
 
+function getRandomRBGColor(){
+    const r = Math.floor(Math.random()*256);
+    const g = Math.floor(Math.random()*256);
+    const b = Math.floor(Math.random()*256);
+    return `rgb(${r},${g},${b})`;
+}
+
 function initializeSquares(){
     const container = document.getElementById('container');
     const userSelection = document.getElementById('popup');
@@ -35,7 +42,7 @@ function initializeSquares(){
             const square = document.createElement("div");
             square.className = "square";
             container.appendChild(square);
-            square.addEventListener('mouseover',function(){square.style.backgroundColor = 'aqua';});
+            square.addEventListener('mouseover',function(){square.style.backgroundColor = getRandomRBGColor();});
             square.addEventListener('mouseout',function(){square.style.backgroundColor = 'white';});
         }
             const squares = document.querySelectorAll('.square');
